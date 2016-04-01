@@ -1,0 +1,11 @@
+#!/bin/bash
+
+if [ -d $HOME ]
+then 
+	echo "Your home dir exists"
+	cd $HOME
+	ls -a
+else
+	echo "Your home dir not exists"
+fi
+

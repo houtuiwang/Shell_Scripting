@@ -1,0 +1,7 @@
+#!/bin/bash
+
+testing=`date`
+echo "The data antime are: " $testing
+
+today=`date +%y%m%d`
+ls /usr/bin -al > log.$today

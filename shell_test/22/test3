@@ -1,0 +1,11 @@
+#!/bin/zsh
+# testing functions in zsh
+
+db1() {
+value=$(( $value* 2 ))
+return $value
+}
+
+value=10
+db1
+echo The answer is $?

@@ -1,0 +1,23 @@
+#!/bin/bash
+
+logfile=./t16test
+touch $logfile
+chmod u-w $logfile
+now=`date +%Y%m%d-%H%M`
+
+if [ -w $logfile ]
+then
+	echo "The program ran at: $now" > $logfile
+	echo "The first attempt succceeded"
+else
+	echo "The first attempt failed"
+fi
+
+chmod u+w $logfile
+if [ -w $logfile ]
+then
+	echo "The program ran at: $now" > $logfile
+	echo "The second attempt succceeded"
+else
+	echo "The second attempt failed"
+fi

@@ -1,0 +1,62 @@
+#!/bin/bash
+#
+# Record_Problem - records system problems into variable
+########################################################
+# Determine mysql location & put into variable
+#
+MYSQL=`which mysql`" Problem_Trek -u cbres"
+#
+########################################################
+# Create Record ID & Report_Date
+#
+ID_NUMBER=`date +%y%m%d%H%M`
+#
+REPORT_DATE=`date +%Y%m%d`
+#
+############################################
+# Acquire information to put into table
+#
+echo
+echo -e "Briefly describle the problem & its symptoms: \c"
+#
+read ANSWER
+PROB_SYMPTOMS=$ANSWER
+#
+# Set Fixed Date & Problem Solution to null for now
+FIXED_DATE=0
+PROB_SOLUTIONS=""
+#
+############################################
+# Insert acquired information into table
+#
+#
+echo
+echo "Problem recorded as follows:"
+echo
+$MYSQL <<EOF
+INSERT INTO problem_logger VALUES (
+$ID_NUMBER,
+$REPORT_DATE,
+$FIXED_DATE,
+"$PROB_SYMPTOMS",
+"$PROB_SOLUTION");
+SELECT * FROM problem_logger WHERE id_number=$ID_NUMBER\G
+EOF
+#
+############################################
+# Check if want to enter a solution now
+#
+echo
+echo -e "Do you have a solution yet? (y/n) \c"
+read ANSWER
+#
+case $ANSWER in
+    y|Y|YES|yes|Yes|yEs|yeS|YEs|yES )
+	. /home/bob/source_code/linux_test_case/shell_test/27/Update_Problem $ID_NUMBER
+	#
+	;;
+    *)
+	# If answer is anything but yes, just exit script
+	;;
+esac
+############################################

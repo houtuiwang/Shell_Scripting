@@ -1,0 +1,6 @@
+#!/bin/bash
+# test connecting to the PostgreSQL server
+
+PSQL=` which psql`
+
+$PSQL test

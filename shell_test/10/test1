@@ -1,0 +1,10 @@
+#!/bin/bash
+
+echo -n "The time and date are: "
+date
+echo "let's see:"
+who
+
+echo "user infot for useid: $USER"
+echo UID: $UID
+echo HOME: $HOME

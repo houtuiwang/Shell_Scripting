@@ -1,0 +1,10 @@
+#!/bin/bash
+
+case $USER in
+bob | bb)
+	echo "Welcome, $USER";;
+testing)
+	echo "Welcome, $USER";;
+jessica)
+	echo "xxx";;
+esac
